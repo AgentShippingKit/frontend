@@ -1,12 +1,12 @@
 import styles from './Resources.module.css'
 
 const ITEMS = [
-  { title: 'Quick Start', desc: 'From zero to running agent in 3 commands', link: 'README', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start' },
-  { title: 'Architecture', desc: 'Deep dive into how AgentShip is built', link: 'Architecture', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-architecture' },
-  { title: 'Create an Agent', desc: 'YAML + Python pattern step by step', link: 'Create Agent', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-create-your-first-agent' },
-  { title: 'Articles', desc: 'Blog posts on agentic AI patterns', link: 'ai/articles', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/articles' },
-  { title: 'Postman Collection', desc: 'Ready-to-use API collection for testing', link: 'postman/', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/postman' },
-  { title: 'Sphinx Docs', desc: 'Auto-generated API reference with types', link: 'docs_sphinx/', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/docs_sphinx' },
+  { title: 'Quick Start', desc: 'From zero to running agent in 3 commands', link: 'Docs', href: 'https://agentship.readthedocs.io/en/latest/user-guides/getting-started/quickstart.html' },
+  { title: 'Architecture', desc: 'How AgentShip is structured under the hood', link: 'Docs', href: 'https://agentship.readthedocs.io/en/latest/index.html#architecture' },
+  { title: 'Agent Patterns', desc: 'Single agent, orchestrator, and tool patterns', link: 'Docs', href: 'https://agentship.readthedocs.io/en/latest/building-agents.html' },
+  { title: 'Agent Config', desc: 'YAML config reference — engines, streaming, memory', link: 'Docs', href: 'https://agentship.readthedocs.io/en/latest/user-guides/building-agents/agent-configuration.html' },
+  { title: 'Postman Collection', desc: 'Ready-to-use API collection for testing', link: 'GitHub', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/postman' },
+  { title: 'Articles', desc: 'Blog posts on agentic AI patterns and design', link: 'GitHub', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/articles' },
 ]
 
 export function Resources() {

@@ -2,14 +2,14 @@ import styles from './Footer.module.css'
 
 const COLS = {
   Project: [
-    { label: 'Documentation', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start' },
+    { label: 'Documentation', href: 'https://agentship.readthedocs.io/' },
     { label: 'GitHub', href: 'https://github.com/harshuljain13/ship-ai-agents' },
     { label: 'Issues', href: 'https://github.com/harshuljain13/ship-ai-agents/issues' },
     { label: 'License (MIT)', href: 'https://github.com/harshuljain13/ship-ai-agents/blob/main/ai/ai-ecosystem/LICENSE' },
   ],
   Resources: [
-    { label: 'Quick Start', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start' },
-    { label: 'Architecture', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-architecture' },
+    { label: 'Quick Start', href: 'https://agentship.readthedocs.io/en/latest/user-guides/getting-started/quickstart.html' },
+    { label: 'Architecture', href: 'https://agentship.readthedocs.io/en/latest/index.html#architecture' },
     { label: 'Postman Collection', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/postman' },
     { label: 'Articles', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/articles' },
   ],

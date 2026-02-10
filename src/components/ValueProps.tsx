@@ -3,17 +3,17 @@ import styles from './ValueProps.module.css'
 const ITEMS = [
   {
     title: 'Easy',
-    desc: 'Define agents in YAML, write minimal Python. Auto-discovery, REST API, session management, and streaming — zero boilerplate.',
+    desc: 'Define agents in YAML, write minimal Python. Auto-discovery registers agents automatically — no manual wiring, no boilerplate.',
     color: 'purple',
   },
   {
     title: 'Fast',
-    desc: 'Production-ready from day one. Docker hot-reload in dev, one-command deploy to Heroku or any cloud. Ship in minutes.',
+    desc: 'Production-ready from day one. Docker hot-reload in dev, one-command deploy to Heroku or any cloud with Docker support.',
     color: 'teal',
   },
   {
     title: 'Reliable',
-    desc: 'End-to-end observability with Opik & Langfuse. Structured tracing, token metrics, guardrails, and persistent session memory.',
+    desc: 'End-to-end observability with Opik tracing and structured logging. Persistent session memory via PostgreSQL or in-memory for dev.',
     color: 'mixed',
   },
 ]

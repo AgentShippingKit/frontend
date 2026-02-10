@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext'
 import styles from './Header.module.css'
 
 const NAV_LINKS = [
-  { label: 'Docs', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start' },
+  { label: 'Docs', href: 'https://agentship.readthedocs.io/' },
   { label: 'Blog', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/articles' },
   { label: 'Community', href: '#community' },
 ]

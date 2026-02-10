@@ -19,7 +19,7 @@ const CHANNELS = [
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>,
     title: 'Documentation',
     desc: 'Guides, API reference & tutorials',
-    href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start',
+    href: 'https://agentship.readthedocs.io/',
     action: 'Read Docs',
   },
 ]

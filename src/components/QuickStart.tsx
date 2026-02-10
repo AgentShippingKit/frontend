@@ -5,8 +5,8 @@ type Setup = 'Docker' | 'Local'
 
 const SETUP_OPTIONS: Setup[] = ['Docker', 'Local']
 const PKG_MAP: Record<Setup, string[]> = {
-  Docker: ['make', 'docker-compose'],
-  Local: ['pip', 'make'],
+  Docker: ['make', 'docker compose'],
+  Local: ['make', 'pipenv'],
 }
 
 const COMMANDS: Record<Setup, Record<string, string>> = {
@@ -14,27 +14,27 @@ const COMMANDS: Record<Setup, Record<string, string>> = {
     make: `git clone https://github.com/harshuljain13/ship-ai-agents.git
 cd ship-ai-agents/ai/ai-ecosystem
 make docker-setup`,
-    'docker-compose': `git clone https://github.com/harshuljain13/ship-ai-agents.git
+    'docker compose': `git clone https://github.com/harshuljain13/ship-ai-agents.git
 cd ship-ai-agents/ai/ai-ecosystem
 cp env.example .env   # Add your API keys
-docker-compose up --build`,
+docker compose up --build`,
   },
   Local: {
-    pip: `git clone https://github.com/harshuljain13/ship-ai-agents.git
-cd ship-ai-agents/ai/ai-ecosystem
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp env.example .env   # Add your API keys
-uvicorn src.service.main:app --reload --port 7001`,
     make: `git clone https://github.com/harshuljain13/ship-ai-agents.git
 cd ship-ai-agents/ai/ai-ecosystem
-make setup && make run`,
+make setup
+make dev`,
+    pipenv: `git clone https://github.com/harshuljain13/ship-ai-agents.git
+cd ship-ai-agents/ai/ai-ecosystem
+pipenv install --dev
+cp env.example .env   # Add your API keys
+pipenv run uvicorn src.service.main:app --reload --port 7001`,
   },
 }
 
 const TIPS: Record<Setup, string> = {
   Docker: 'Hot-reload enabled — edit code in src/ and changes auto-reload.',
-  Local: 'Requires Python 3.10+. Python 3.13 recommended.',
+  Local: 'Requires Python 3.13+ and pipenv. Run "pip install pipenv" if needed.',
 }
 
 export function QuickStart() {
@@ -62,9 +62,9 @@ export function QuickStart() {
 
         {/* Hints */}
         <div className={styles.hints}>
-          <span>Requires Python 3.10+</span>
+          <span>Python 3.13+ recommended</span>
           <span>Docker recommended</span>
-          <span><a href="https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem#-quick-start" target="_blank" rel="noopener noreferrer">Full guide</a></span>
+          <span><a href="https://agentship.readthedocs.io/en/latest/user-guides/getting-started/quickstart.html" target="_blank" rel="noopener noreferrer">Full guide</a></span>
         </div>
 
         {/* Selectors */}
