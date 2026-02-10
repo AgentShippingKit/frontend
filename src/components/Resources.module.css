@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.25s, transform 0.15s;
+}
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 0.375rem;
+}
+.cardDesc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  flex: 1;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+.cardLink {
+  font-size: 0.75rem;
+  color: var(--brand-indigo-light);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+.card:hover .cardLink { opacity: 1; }
