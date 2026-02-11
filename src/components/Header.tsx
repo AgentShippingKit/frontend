@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Header.module.css'
 
 const NAV_LINKS = [
-  { label: 'Docs', href: 'https://agentship.readthedocs.io/' },
-  { label: 'Community', href: '#community' },
+  { label: 'Docs', href: 'https://agentship.readthedocs.io/', external: true },
+  { label: 'Changelog', href: '/changelog', external: false },
+  { label: 'Community', href: '#community', external: true },
 ]
 
 export function Header() {
@@ -20,9 +22,17 @@ export function Header() {
         </a>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
-          {NAV_LINKS.map((l) => (
-            <a key={l.label} href={l.href} className={styles.navLink}>{l.label}</a>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.external ? (
+              <a key={l.label} href={l.href} className={styles.navLink}>
+                {l.label}
+              </a>
+            ) : (
+              <Link key={l.label} to={l.href} className={styles.navLink}>
+                {l.label}
+              </Link>
+            )
+          )}
           <a href="https://github.com/harshuljain13/ship-ai-agents" target="_blank" rel="noopener noreferrer" className={styles.navLink}>
             GitHub
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3.5 1h7.5v7.5M11 1L4.5 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
