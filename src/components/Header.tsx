@@ -16,10 +16,10 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <a href="#" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <span className={styles.logoAgent}>Agent</span>
           <span className={styles.logoShip}>Ship</span>
-        </a>
+        </Link>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
           {NAV_LINKS.map((l) =>

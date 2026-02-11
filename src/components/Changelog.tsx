@@ -2,199 +2,259 @@ import { useState } from 'react'
 import styles from './Changelog.module.css'
 
 interface ChangelogEntry {
-  id: string
   date: string
+  version?: string
   title: string
-  description: string
-  type: 'feature' | 'fix' | 'improvement'
+  highlights: string[]
+  type: 'release' | 'feature' | 'fix' | 'docs'
   link?: string
 }
 
-interface MonthGroup {
-  month: string
-  entries: ChangelogEntry[]
-}
-
-const CHANGELOG_DATA: ChangelogEntry[] = [
+const CHANGELOG: ChangelogEntry[] = [
   {
-    id: '2026-02-10',
     date: '2026-02-10',
-    title: 'Version 1.2.0 Released',
-    description: 'Major update with enhanced agent orchestration capabilities and improved error handling.',
+    title: 'LangGraph Engine + Streaming + Opik Observability',
+    highlights: [
+      'Added LangGraph as a second execution engine alongside Google ADK — configurable per agent via YAML',
+      'True token-by-token SSE streaming via LangGraph + LiteLLM',
+      'Opik observability integration for both ADK and LangGraph engines',
+      'Major refactor: factories for engines, tools, memory, and observability',
+      'New session adapters for ADK and LangGraph with PostgreSQL persistence',
+      'Added Sphinx docs requirements for Read the Docs deployment',
+    ],
+    type: 'release',
+    link: 'https://github.com/harshuljain13/ship-ai-agents/commit/d5fe6e0',
+  },
+  {
+    date: '2026-01-11',
+    title: 'Improved Heroku Deployment',
+    highlights: [
+      'Enhanced Heroku deploy scripts with better error handling',
+      'Fixed Procfile and environment variable configuration',
+    ],
     type: 'feature',
+    link: 'https://github.com/harshuljain13/ship-ai-agents/commit/f992d19',
   },
   {
-    id: '2026-02-05',
-    date: '2026-02-05',
-    title: 'Performance Improvements',
-    description: 'Optimized agent execution time by 40% through better caching strategies.',
-    type: 'improvement',
+    date: '2026-01-01',
+    version: 'v1.0.0',
+    title: 'Documentation, Branding & Architecture',
+    highlights: [
+      'Full Sphinx documentation with Furo theme — quickstart, building agents, patterns, API reference',
+      'Architecture documentation with system diagram',
+      'AgentShip branding: logos, icons, favicons, and GitHub banner',
+      'Debug UI URL added to Docker setup output',
+      'README overhaul with technology badges',
+    ],
+    type: 'docs',
+    link: 'https://github.com/harshuljain13/ship-ai-agents/commit/90d003f',
   },
   {
-    id: '2026-02-01',
-    date: '2026-02-01',
-    title: 'Bug Fix: Memory Leak',
-    description: 'Fixed memory leak in long-running agent sessions.',
+    date: '2025-12-31',
+    title: 'Open-Source Cleanup',
+    highlights: [
+      'Generalized agent examples — removed domain-specific content',
+      'Cleaned up redundant documentation and sync scripts',
+    ],
     type: 'fix',
   },
   {
-    id: '2026-01-28',
-    date: '2026-01-28',
-    title: 'New Tool Support',
-    description: 'Added support for custom tool definitions and validation.',
-    type: 'feature',
-    link: 'https://agentship.readthedocs.io/',
-  },
-  {
-    id: '2026-01-20',
-    date: '2026-01-20',
-    title: 'Documentation Update',
-    description: 'Comprehensive documentation overhaul with new examples and tutorials.',
-    type: 'improvement',
-    link: 'https://agentship.readthedocs.io/',
-  },
-  {
-    id: '2026-01-15',
-    date: '2026-01-15',
-    title: 'Version 1.1.0 Released',
-    description: 'Added multi-agent coordination and improved streaming responses.',
+    date: '2025-12-29',
+    title: 'Debug UI & Streaming',
+    highlights: [
+      'Built-in Debug UI for testing agents in the browser',
+      'SSE streaming support for agent chat responses',
+      'Added AI articles on agentic patterns',
+    ],
     type: 'feature',
   },
   {
-    id: '2026-01-10',
-    date: '2026-01-10',
-    title: 'Bug Fix: Rate Limiting',
-    description: 'Fixed rate limiting issues with concurrent agent requests.',
+    date: '2025-12-26',
+    title: 'Sphinx Docs & Docker Setup',
+    highlights: [
+      'Migrated docs to Sphinx with Markdown + RST support',
+      'Makefile commands for building and serving docs',
+      'Docker Compose setup with PostgreSQL and hot-reload',
+      'One-command `make docker-setup`',
+    ],
+    type: 'feature',
+  },
+  {
+    date: '2025-12-22',
+    title: 'Agent Tools & Testing',
+    highlights: [
+      'Added composable agent tools (action items, Azure artifact reading)',
+      'YAML-based tool configuration with function and agent tool types',
+      'Unit and integration test suite',
+      'Code modularization following DRY principles',
+    ],
+    type: 'feature',
+  },
+  {
+    date: '2025-12-12',
+    title: 'A2A Protocol & Heroku Fix',
+    highlights: [
+      'Conversation insights via A2A (Agent-to-Agent) protocol',
+      'Fixed Heroku build by resolving Pipfile.lock conflicts',
+    ],
     type: 'fix',
   },
   {
-    id: '2025-12-20',
-    date: '2025-12-20',
-    title: 'Version 1.0.0 Released',
-    description: 'Initial stable release of AgentShip with core functionality.',
+    date: '2025-10-08',
+    title: 'Initial Open-Source Release',
+    highlights: [
+      'Production-ready AI agents framework — open sourced under MIT',
+      'Google ADK-based agent engine with YAML configuration',
+      'Auto-discovery: drop in a folder, agent registers itself',
+      'FastAPI REST API with session management',
+      'Three agent patterns: single agent, orchestrator, and tool-based',
+      'PostgreSQL session storage with in-memory fallback',
+      'Heroku deployment scripts',
+      'Postman collection for API testing',
+    ],
+    type: 'release',
+    link: 'https://github.com/harshuljain13/ship-ai-agents/commit/1fdba8d',
+  },
+  {
+    date: '2025-10-04',
+    title: 'Agent Patterns & Observability',
+    highlights: [
+      'Translation agent as single-agent pattern example',
+      'Supervisor agent (orchestrator) pattern example',
+      'Basic observability layer',
+      'Tool support for agents',
+    ],
     type: 'feature',
   },
   {
-    id: '2025-12-15',
-    date: '2025-12-15',
-    title: 'Beta Launch',
-    description: 'AgentShip enters public beta with full documentation.',
+    date: '2025-09-27',
+    title: 'Heroku Deployment & Dynamic API',
+    highlights: [
+      'First Heroku deployment with gunicorn',
+      'Dynamic API model accepting multiple query types',
+      'Architecture diagram',
+    ],
     type: 'feature',
+  },
+  {
+    date: '2025-09-24',
+    title: 'Project Genesis',
+    highlights: [
+      'Initial framework setup for AI agents',
+      'Service layer with FastAPI chat endpoints',
+      'Environment-based configuration',
+    ],
+    type: 'release',
   },
 ]
 
-function groupByMonth(entries: ChangelogEntry[]): MonthGroup[] {
-  const groups: { [key: string]: ChangelogEntry[] } = {}
-
-  entries.forEach((entry) => {
-    const date = new Date(entry.date)
-    const monthKey = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
-
-    if (!groups[monthKey]) {
-      groups[monthKey] = []
-    }
-    groups[monthKey].push(entry)
+function formatDate(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
   })
+}
 
-  return Object.entries(groups).map(([month, entries]) => ({
-    month,
-    entries: entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-  }))
+function formatMonth(dateStr: string) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
+function groupByMonth(entries: ChangelogEntry[]) {
+  const groups: { month: string; entries: ChangelogEntry[] }[] = []
+  let currentMonth = ''
+
+  for (const entry of entries) {
+    const month = formatMonth(entry.date)
+    if (month !== currentMonth) {
+      currentMonth = month
+      groups.push({ month, entries: [] })
+    }
+    groups[groups.length - 1].entries.push(entry)
+  }
+  return groups
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  release: 'Release',
+  feature: 'Feature',
+  fix: 'Fix',
+  docs: 'Docs',
 }
 
 export function Changelog() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [search, setSearch] = useState('')
 
-  const filteredEntries = CHANGELOG_DATA.filter(
-    (entry) =>
-      entry.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      entry.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtered = CHANGELOG.filter(
+    (e) =>
+      e.title.toLowerCase().includes(search.toLowerCase()) ||
+      e.highlights.some((h) => h.toLowerCase().includes(search.toLowerCase()))
   )
 
-  const monthGroups = groupByMonth(filteredEntries)
-
-  const getTypeBadgeClass = (type: string) => {
-    switch (type) {
-      case 'feature':
-        return styles.badgeFeature
-      case 'fix':
-        return styles.badgeFix
-      case 'improvement':
-        return styles.badgeImprovement
-      default:
-        return ''
-    }
-  }
+  const groups = groupByMonth(filtered)
 
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
+      {/* Header */}
       <div className={styles.hero}>
-        <h1 className={styles.title}>
-          <span className={styles.gradientText}>Changelog</span>
-        </h1>
-        <p className={styles.subtitle}>
-          Stay updated with the latest features, improvements, and fixes
-        </p>
-        <div className={styles.searchWrapper}>
-          <input
-            type="text"
-            placeholder="Search changelog..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={styles.searchInput}
-          />
-          <svg
-            className={styles.searchIcon}
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
+        <div className={styles.heroInner}>
+          <h1 className={styles.heading}>
+            <span className="gradient-text">Changelog</span>
+          </h1>
+          <p className={styles.subtitle}>
+            What's new in AgentShip — features, fixes, and improvements from the actual repository.
+          </p>
+          <div className={styles.searchWrap}>
+            <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input
+              type="text"
+              placeholder="Search changelog..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className={styles.searchInput}
+            />
+          </div>
         </div>
       </div>
 
-      <div className={styles.content}>
-        {monthGroups.length > 0 ? (
-          monthGroups.map((group) => (
-            <div key={group.month} className={styles.monthSection}>
-              <h2 className={styles.monthTitle}>{group.month}</h2>
-              <div className={styles.entriesGrid}>
-                {group.entries.map((entry) => (
-                  <div key={entry.id} className={styles.entryCard}>
-                    <div className={styles.entryHeader}>
-                      <span className={`${styles.typeBadge} ${getTypeBadgeClass(entry.type)}`}>
-                        {entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}
-                      </span>
-                      <span className={styles.date}>
-                        {new Date(entry.date).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                    <h3 className={styles.entryTitle}>{entry.title}</h3>
-                    <p className={styles.entryDescription}>{entry.description}</p>
-                    {entry.link && (
-                      <a href={entry.link} className={styles.entryLink} target="_blank" rel="noopener noreferrer">
-                        Learn more →
-                      </a>
-                    )}
+      {/* Timeline */}
+      <div className={styles.timeline}>
+        {groups.length > 0 ? (
+          groups.map((g) => (
+            <div key={g.month} className={styles.monthGroup}>
+              <div className={styles.monthLabel}>{g.month}</div>
+              {g.entries.map((entry, i) => (
+                <div key={i} className={styles.card}>
+                  <div className={styles.cardTop}>
+                    <span className={`${styles.badge} ${styles['badge_' + entry.type]}`}>
+                      {TYPE_LABELS[entry.type]}
+                    </span>
+                    <span className={styles.date}>{formatDate(entry.date)}</span>
                   </div>
-                ))}
-              </div>
+                  <h3 className={styles.cardTitle}>
+                    {entry.version && <span className={styles.version}>{entry.version}</span>}
+                    {entry.title}
+                  </h3>
+                  <ul className={styles.highlights}>
+                    {entry.highlights.map((h, j) => (
+                      <li key={j}>{h}</li>
+                    ))}
+                  </ul>
+                  {entry.link && (
+                    <a href={entry.link} target="_blank" rel="noopener noreferrer" className={styles.commitLink}>
+                      View commit
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1h7.5v7.5M11 1L4.5 7.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
           ))
         ) : (
-          <div className={styles.noResults}>
-            <p>No changelog entries found matching "{searchQuery}"</p>
-          </div>
+          <p className={styles.empty}>No entries matching "{search}"</p>
         )}
       </div>
     </div>

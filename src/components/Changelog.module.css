@@ -1,269 +1,223 @@
-.container {
+/* ═══════════════ CHANGELOG PAGE ═══════════════ */
+/* Uses theme CSS variables — no hardcoded colors  */
+
+.page {
   min-height: 100vh;
-  padding-top: 80px;
 }
 
+/* ─── Hero ─── */
 .hero {
+  position: relative;
+  padding: 6rem 1.5rem 2.5rem;
   text-align: center;
-  padding: 60px 20px 40px;
-  max-width: 800px;
+  border-bottom: 1px solid var(--border);
+}
+
+.heroInner {
+  max-width: 640px;
   margin: 0 auto;
 }
 
-.title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  margin: 0 0 16px;
+.heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1.1;
-}
-
-.gradientText {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-:global(.dark) .gradientText {
-  background: linear-gradient(135deg, #a8b5ff 0%, #c79dff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.75rem;
 }
 
 .subtitle {
-  font-size: 1.125rem;
-  color: #64748b;
-  margin: 0 0 32px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
-:global(.dark) .subtitle {
-  color: #94a3b8;
-}
-
-.searchWrapper {
+/* ─── Search ─── */
+.searchWrap {
   position: relative;
-  max-width: 500px;
+  max-width: 420px;
   margin: 0 auto;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 14px 48px 14px 20px;
-  font-size: 1rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #1e293b;
-  transition: all 0.2s ease;
-}
-
-.searchInput:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-:global(.dark) .searchInput {
-  background: #1e293b;
-  color: #f1f5f9;
-  border-color: #334155;
-}
-
-:global(.dark) .searchInput:focus {
-  border-color: #a8b5ff;
-  box-shadow: 0 0 0 3px rgba(168, 181, 255, 0.1);
 }
 
 .searchIcon {
   position: absolute;
-  right: 16px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #94a3b8;
+  color: var(--text-muted);
   pointer-events: none;
 }
 
-.content {
-  max-width: 1200px;
+.searchInput {
+  width: 100%;
+  padding: 0.7rem 1rem 0.7rem 2.75rem;
+  font-size: 0.925rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.searchInput::placeholder { color: var(--text-muted); }
+.searchInput:focus {
+  outline: none;
+  border-color: var(--border-hover);
+  box-shadow: 0 0 0 3px var(--glow-primary);
+}
+
+/* ─── Timeline ─── */
+.timeline {
+  max-width: 760px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 2.5rem 1.5rem 5rem;
 }
 
-.monthSection {
-  margin-bottom: 60px;
+/* ─── Month group ─── */
+.monthGroup {
+  margin-bottom: 2.5rem;
 }
 
-.monthTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #e2e8f0;
+.monthLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-left: 0.25rem;
 }
 
-:global(.dark) .monthTitle {
-  color: #f1f5f9;
-  border-color: #334155;
+/* ─── Card ─── */
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.2s;
 }
-
-.entriesGrid {
-  display: grid;
-  gap: 20px;
-}
-
-.entryCard {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 24px;
-  transition: all 0.2s ease;
-}
-
-.entryCard:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 
-:global(.dark) .entryCard {
-  background: #1e293b;
-  border-color: #334155;
-}
-
-:global(.dark) .entryCard:hover {
-  border-color: #475569;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.entryHeader {
+.cardTop {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
-.typeBadge {
+/* ─── Badges ─── */
+.badge {
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
+  padding: 0.2rem 0.65rem;
   border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
 }
 
-.badgeFeature {
-  background: rgba(34, 197, 94, 0.1);
-  color: #16a34a;
+.badge_release {
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--brand-indigo-light);
 }
-
-:global(.dark) .badgeFeature {
-  background: rgba(34, 197, 94, 0.15);
-  color: #4ade80;
+.badge_feature {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--brand-teal);
 }
-
-.badgeFix {
-  background: rgba(239, 68, 68, 0.1);
-  color: #dc2626;
+.badge_fix {
+  background: rgba(251, 146, 60, 0.12);
+  color: #fb923c;
 }
-
-:global(.dark) .badgeFix {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-}
-
-.badgeImprovement {
-  background: rgba(59, 130, 246, 0.1);
-  color: #2563eb;
-}
-
-:global(.dark) .badgeImprovement {
-  background: rgba(59, 130, 246, 0.15);
+.badge_docs {
+  background: rgba(96, 165, 250, 0.12);
   color: #60a5fa;
 }
 
 .date {
-  color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  color: var(--text-muted);
 }
 
-.entryTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 8px;
+/* ─── Card content ─── */
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
 }
 
-:global(.dark) .entryTitle {
-  color: #f1f5f9;
+.version {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 
-.entryDescription {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: #64748b;
-  margin: 0 0 12px;
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+.highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+}
+.highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brand-periwinkle);
+  opacity: 0.6;
 }
 
-:global(.dark) .entryDescription {
-  color: #94a3b8;
-}
-
-.entryLink {
+.commitLink {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #667eea;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brand-indigo-light);
+  transition: color 0.15s;
+}
+.commitLink:hover {
+  color: var(--brand-indigo);
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
-.entryLink:hover {
-  color: #5568d3;
-}
-
-:global(.dark) .entryLink {
-  color: #a8b5ff;
-}
-
-:global(.dark) .entryLink:hover {
-  color: #c0cbff;
-}
-
-.noResults {
+/* ─── Empty state ─── */
+.empty {
   text-align: center;
-  padding: 60px 20px;
-  color: #94a3b8;
+  padding: 4rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding: 40px 20px 30px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .content {
-    padding: 30px 16px 60px;
-  }
-
-  .entryCard {
-    padding: 20px;
-  }
-
-  .entryTitle {
-    font-size: 1.125rem;
-  }
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .hero { padding: 4.5rem 1.25rem 2rem; }
+  .card { padding: 1.25rem; }
+  .cardTitle { font-size: 1.05rem; }
 }
