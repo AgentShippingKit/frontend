@@ -1,27 +1,40 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Header.module.css'
 
 const NAV_LINKS = [
-  { label: 'Docs', href: 'https://agentship.readthedocs.io/' },
-  { label: 'Community', href: '#community' },
+  { label: 'Docs', href: 'https://agentship.readthedocs.io/', external: true },
+  { label: 'Changelog', href: '/changelog', external: false },
+  { label: 'Community', href: '#community', external: false },
 ]
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { theme, toggle } = useTheme()
+  const location = useLocation()
 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <a href="#" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <span className={styles.logoAgent}>Agent</span>
           <span className={styles.logoShip}>Ship</span>
-        </a>
+        </Link>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
           {NAV_LINKS.map((l) => (
-            <a key={l.label} href={l.href} className={styles.navLink}>{l.label}</a>
+            l.external ? (
+              <a key={l.label} href={l.href} className={styles.navLink} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                {l.label}
+              </a>
+            ) : (
+              l.href.startsWith('#') ? (
+                <a key={l.label} href={l.href} className={styles.navLink}>{l.label}</a>
+              ) : (
+                <Link key={l.label} to={l.href} className={styles.navLink}>{l.label}</Link>
+              )
+            )
           ))}
           <a href="https://github.com/harshuljain13/ship-ai-agents" target="_blank" rel="noopener noreferrer" className={styles.navLink}>
             GitHub
