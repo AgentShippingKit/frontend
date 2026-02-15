@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext'
 import styles from './Header.module.css'
 
 const NAV_LINKS = [
-  { label: 'Docs', href: 'https://agentship.readthedocs.io/', external: true },
+  { label: 'Docs', href: 'https://docs.agent-ship.dev/', external: true },
   { label: 'Changelog', href: '/changelog', external: false },
   { label: 'Community', href: '#community', external: true },
 ]

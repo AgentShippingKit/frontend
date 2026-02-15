@@ -7,7 +7,7 @@ const PROJECTS = [
   { name: 'Session Memory', tag: 'PostgreSQL or in-memory persistent conversations', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/src/agent_framework/session' },
   { name: 'Tool System', tag: 'YAML-configured function and agent tools', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/src/agent_framework/tools' },
   { name: 'Debug UI', tag: 'Built-in web UI for testing agents locally', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/debug_ui' },
-  { name: 'Documentation', tag: 'API reference, guides, and tutorials', href: 'https://agentship.readthedocs.io/' },
+  { name: 'Documentation', tag: 'API reference, guides, and tutorials', href: 'https://docs.agent-ship.dev/' },
   { name: 'Docker Deploy', tag: 'Production Dockerfile with hot-reload compose', href: 'https://github.com/harshuljain13/ship-ai-agents/tree/main/ai/ai-ecosystem/Dockerfile' },
 ]
 

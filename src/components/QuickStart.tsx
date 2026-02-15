@@ -64,7 +64,7 @@ export function QuickStart() {
         <div className={styles.hints}>
           <span>Python 3.13+ recommended</span>
           <span>Docker recommended</span>
-          <span><a href="https://agentship.readthedocs.io/en/latest/user-guides/getting-started/quickstart.html" target="_blank" rel="noopener noreferrer">Full guide</a></span>
+          <span><a href="https://docs.agent-ship.dev/en/latest/user-guides/getting-started/quickstart.html" target="_blank" rel="noopener noreferrer">Full guide</a></span>
         </div>
 
         {/* Selectors */}
